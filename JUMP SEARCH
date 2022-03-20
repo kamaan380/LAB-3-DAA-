@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int Jumpsearch(int A[], int key, int n)
+{
+    int m = sqrt(n);
+    int i = 0;
+    while (A[m] <= key && m < n)
+    {
+        i = m;
+        m = m + (sqrt(n));
+        if (m > (n - 1))
+        {
+            m = n;
+        }
+    }
+    for (int k = i; k < m; k++)
+    {
+        if (A[k] == key)
+        {
+            return k;
+        }
+    }
+    return -1;
+}
+int main()
+{
+    int key, n, A[500];
+    printf("Enter size of array");
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d", &A[i]);
+    }
+    printf("Enter key to be searched:");
+    scanf("%d", &key);
+    key = Jumpsearch(A, key, n);
+    printf("Index value is of key is:%d", key);
+}
